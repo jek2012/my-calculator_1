@@ -1,0 +1,50 @@
+/* Keep the document within the viewport, including portrait phone screens. */
+.estimate-preview {
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+.estimate-preview > * { flex-shrink: 0; min-width: 0; }
+.estimate-preview > :first-child { flex-wrap: wrap; gap: 12px; }
+.estimate-preview > :first-child > * { min-width: 0; flex-wrap: wrap; }
+.estimate-paper { box-sizing: border-box; color-scheme: light; background: #fff; }
+.estimate-paper table { table-layout: fixed; width: 100%; }
+.estimate-paper th, .estimate-paper td { overflow-wrap: anywhere; }
+.estimate-paper th:nth-child(1) { width: 4%; }
+.estimate-paper th:nth-child(2) { width: 12%; }
+.estimate-paper th:nth-child(3) { width: 30%; }
+.estimate-paper th:nth-child(4) { width: 11%; }
+.estimate-paper th:nth-child(5), .estimate-paper th:nth-child(6) { width: 8%; }
+.estimate-paper th:nth-child(7) { width: 13%; }
+.estimate-paper th:nth-child(8) { width: 14%; }
+@media screen and (max-width: 639px) {
+  .estimate-preview { padding: 8px; }
+  .estimate-paper { padding: 12px; border-radius: 12px; }
+  .estimate-paper > :first-child > :first-child { flex-direction: column; gap: 12px; }
+  .estimate-paper > :first-child > :first-child > :last-child { text-align: left; }
+  .estimate-paper h1 { font-size: 19px; overflow-wrap: anywhere; }
+  .estimate-paper th, .estimate-paper td { padding: 6px 2px; font-size: 8px; line-height: 1.4; }
+  .estimate-paper .grid { gap: 12px; }
+  .estimate-paper .grid > * { min-width: 0; overflow-wrap: anywhere; }
+}
+@media print {
+  @page { size: A4 portrait; margin: 10mm; }
+  html, body, #root { height: auto !important; min-height: 0 !important; overflow: visible !important; background: #fff !important; color-scheme: light; }
+  /* Remove the calculator from layout so it cannot create extra printed pages. */
+  #root > div { display: block !important; min-height: 0 !important; background: #fff !important; }
+  #root > div > :not(.estimate-preview) { display: none !important; }
+  .estimate-preview {
+    position: static !important; display: block !important; overflow: visible !important;
+    height: auto !important; padding: 0 !important; background: #fff !important;
+    backdrop-filter: none !important;
+  }
+  .estimate-preview > :first-child { display: none !important; }
+  .estimate-paper {
+    width: 100% !important; max-width: none !important; margin: 0 !important;
+    padding: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .estimate-paper th, .estimate-paper td { padding: 5px 4px; font-size: 9px; }
+  .estimate-paper thead { display: table-header-group; }
+  .estimate-paper tr { break-inside: avoid; }
+  .estimate-paper > .flex, .estimate-paper > .grid { break-inside: avoid; }
+}

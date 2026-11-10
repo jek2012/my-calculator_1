@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Инженерная Смета" />
     <meta name="format-detection" content="telephone=no" />
-    <script type="module" crossorigin src="/assets/index-_whSu8N9.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D0maADRl.css">
+    <script type="module" crossorigin src="/assets/index-_whsu8n9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-d0maadrl.css">
+    <link rel="stylesheet" href="/assets/estimate-export.css">
+    <link rel="stylesheet" href="/assets/login.css">
   </head>
   <body>
     <div id="root"></div>
@@ -53,11 +55,11 @@
     });
   }
 
-  # Запускаем проверку сразу при загрузке страницы
+  // Запускаем проверку сразу при загрузке страницы
   document.addEventListener("DOMContentLoaded", removeNetlifyBadge);
   window.addEventListener("load", removeNetlifyBadge);
 
-  # Следим за страницей: если Netlify попытается встроить плашку позже, скрипт её тут же удалит
+  // Следим за страницей: если Netlify попытается встроить плашку позже, скрипт её тут же удалит
   const observer = new MutationObserver(removeNetlifyBadge);
   observer.observe(document.body, { childList: true, subtree: true });
 </script>

@@ -1,0 +1,10 @@
+/* Keep complete profile names inside their cards on portrait phones. */
+.login-profile-options > button { min-width: 0; }
+.login-profile-options > button > div { min-width: 0; }
+.login-profile-options > button > div > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 479px) {
+  .login-profile-options { grid-template-columns: minmax(0, 1fr); }
+}
