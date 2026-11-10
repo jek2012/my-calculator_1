@@ -19,11 +19,20 @@
   <body>
     <div id="root"></div>
   <style>
-  [class*="netlify"], .netlify-badge, #netlify-badge, img[src*="netlify"], div[id*="netlify"], iframe[src*="netlify"] {
+  /* Жесткое скрытие любых элементов, содержащих упоминание Netlify */
+  [class*="netlify" i], 
+  [id*="netlify" i], 
+  img[src*="netlify" i], 
+  div[class*="badge" i],
+  .netlify-badge,
+  #netlify-badge {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+    top: -9999px !important;
     pointer-events: none !important;
   }
 </style>
