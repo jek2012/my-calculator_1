@@ -36,6 +36,32 @@
     pointer-events: none !important;
   }
 </style>
+    <script>
+  // Функция для удаления плашки Netlify
+  function removeNetlifyBadge() {
+    // Ищем любые элементы, содержащие netlify в классах, id или атрибутах
+    const selectors = [
+      '[class*="netlify" i]', 
+      '[id*="netlify" i]', 
+      '#netlify-badge', 
+      '.netlify-badge',
+      'iframe[src*="netlify" i]'
+    ];
+    
+    selectors.forEach(selector => {
+      document.querySelectorAll(selector).forEach(el => el.remove());
+    });
+  }
+
+  # Запускаем проверку сразу при загрузке страницы
+  document.addEventListener("DOMContentLoaded", removeNetlifyBadge);
+  window.addEventListener("load", removeNetlifyBadge);
+
+  # Следим за страницей: если Netlify попытается встроить плашку позже, скрипт её тут же удалит
+  const observer = new MutationObserver(removeNetlifyBadge);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
+
   </body>
 </html>
 
