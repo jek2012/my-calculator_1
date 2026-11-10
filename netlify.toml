@@ -1,2 +1,10 @@
 [build]
   publish = "."
+
+[processing]
+  skip_processing = true
+
+[processing.html]
+  pretty_urls = false
+  bundle = false
+  minify = false
